@@ -1,0 +1,1 @@
+import{c as y,f as _,Z as u,_ as o,h as t,C as p,Y as i,p as l,i as d,v as g,j as v}from"./CLOYZyRZ.js";function C(n,r){let s=null,f=t;var a;if(t){s=g;for(var e=v(document.head);e!==null&&(e.nodeType!==p||e.data!==n);)e=i(e);if(e===null)l(!1);else{var E=i(e);e.remove(),d(E)}}t||(a=document.head.appendChild(y()));try{_(()=>r(a),u|o)}finally{f&&(l(!0),d(s))}}export{C as h};

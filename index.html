@@ -1,81 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: #03020a;
+        color: #e8e4f0;
+        font-family: 'Syne', sans-serif;
+        overflow-x: hidden;
+        min-height: 100vh;
+        cursor: none;
+      }
+      a { color: inherit; }
+      button { cursor: none; }
 
-<head>
-  <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="description" name="description">
-  <meta name="google" content="notranslate" />
-  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
 
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-  
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
-  <link href="./assets/favicon.ico" rel="icon">
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.7s, transform 0.7s;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  <title>Title page</title>  
+      .section-label {
+        font-size: 0.67rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #b48eff;
+        margin-bottom: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .section-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255,255,255,0.08);
+        max-width: 50px;
+      }
 
-<link href="./main.3f6952e4.css" rel="stylesheet"></head>
+      .tag {
+        padding: 0.3rem 0.8rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1px;
+        font-size: 0.72rem;
+        letter-spacing: 0.05em;
+        color: #7a7490;
+        transition: all 0.2s;
+        display: inline-block;
+      }
+      .tag:hover {
+        border-color: #b48eff;
+        color: #b48eff;
+        background: rgba(180,142,255,0.13);
+      }
 
-<body class="minimal">
-<div id="site-border-left"></div>
-<div id="site-border-right"></div>
-<div id="site-border-top"></div>
-<div id="site-border-bottom"></div>
-<header>
-  <nav class="navbar  navbar-fixed-top navbar-inverse">
-    <div class="container">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.6rem;
+        border-radius: 2px;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.25s;
+        cursor: none;
+        border: none;
+      }
+      .btn-primary {
+        background: #b48eff;
+        color: #03020a;
+      }
+      .btn-primary:hover {
+        background: #c8a8ff;
+        box-shadow: 0 0 30px rgba(180,142,255,0.45);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: #e8e4f0;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .btn-ghost:hover {
+        border-color: #b48eff;
+        color: #b48eff;
+      }
 
-      <div class="collapse navbar-collapse" id="navbar-collapse">
-        <ul class="nav navbar-nav ">
-          <li><a href="./index.html" title="">Home</a></li>
-          <li><a href="./works.html" title="">Works</a></li>
-          <li><a href="./about.html" title="">About me</a></li>
-          <li><a href="./contact.html" title="">Contact</a></li>
-        </ul>
+      .divider {
+        height: 1px;
+        background: rgba(255,255,255,0.08);
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    </style>
+    <link href="/_app/immutable/entry/start.CVjSy34K.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DN5DVEOn.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/_9Q8be-N.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CLOYZyRZ.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/C-5Xbz3B.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/app.BwlM8DgZ.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DsnmJJEf.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/BFG_waxo.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DwHDO35K.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/1GAEMH92.js" rel="modulepreload">
+		
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">
+			<script>
+				{
+					__sveltekit_1p9v5p0 = {
+						base: ""
+					};
 
+					const element = document.currentScript.parentElement;
 
-      </div> 
-    </div>
-  </nav>
-</header>
-  <div class="hero-full-container background-image-container white-text-container" style="background-image: url('./assets/images/tech.jpg')">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="hero-full-wrapper">
-            <div class="text-content">
-              <h1>Hello,<br>
-                <span id="typed-strings">
-                  <span>I'm Sahitya Madipalli</span>
-                  <span>Developer and Designer</span>
-                  <span>Currently a student</span>
-                </span>
-                <span id="typed"></span>
-              </h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     type();
-     movingBackgroundImage();
-  });
-</script>
-
-
-<script type="text/javascript" src="./main.70a66962.js"></script></body>
-
+					Promise.all([
+						import("/_app/immutable/entry/start.CVjSy34K.js"),
+						import("/_app/immutable/entry/app.BwlM8DgZ.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+  </body>
 </html>
