@@ -9,5 +9,17 @@
     "lens": "18-135mm f/5.6",
     "settings": "1/200s · f/5.6 · ISO 400",
     "span": 2
+  },
+  
+  {
+    "id": 2,
+    "url": "/photos/milkywaygrandcanyon.jpeg",
+    "thumb": "/photos/milkywaygrandcanyon.jpeg",
+    "category": "Nature",
+    "caption": "Milky Way over Grand Canyon National Park, AZ.",
+    "camera": "Canon EOS 760D",
+    "lens": "18-135mm f/5.6",
+    "settings": "8s · f/3.0 · ISO 1600",
+    "span": 2
   }
 ]
