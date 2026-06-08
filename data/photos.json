@@ -10,11 +10,11 @@
     "settings": "1/200s · f/5.6 · ISO 400",
     "span": 2
   },
-  
+
   {
     "id": 2,
-    "url": "/photos/milkywaygrandcanyon.jpeg",
-    "thumb": "/photos/milkywaygrandcanyon.jpeg",
+    "url": "/photos/milkywaygrandcanyon.jpg",
+    "thumb": "/photos/milkywaygrandcanyon.jpg",
     "category": "Nature",
     "caption": "Milky Way over Grand Canyon National Park, AZ.",
     "camera": "Canon EOS 760D",
