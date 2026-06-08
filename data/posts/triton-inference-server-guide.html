@@ -1,0 +1,33 @@
+<p>Most Triton tutorials show you how to get a single ResNet50 serving requests on your laptop. That's fine for learning. But when you're running 6 different models simultaneously across 30 camera feeds in a production surveillance system, the tricky parts are very different.</p>
+
+<p>Here's what I actually needed to know that I couldn't find in a single place.</p>
+
+<h2>Model Repository Structure Matters More Than You Think</h2>
+
+<p>Triton's model repository isn't just a folder of model files. It's a configuration system. Getting the directory structure and config.pbtxt files right upfront saves hours of debugging.</p>
+
+<pre><code>model_repository/
+├── face_detector/
+│   ├── 1/
+│   │   └── model.onnx
+│   └── config.pbtxt
+├── reid_model/
+│   ├── 1/
+│   │   └── model.plan  # TensorRT engine
+│   └── config.pbtxt
+└── superresolution/
+    ├── 1/
+    │   └── model.savedmodel/
+    └── config.pbtxt</code></pre>
+
+<h2>Dynamic Batching Is Your Friend</h2>
+
+<p>For a multi-camera system, you're getting inference requests at irregular intervals from many sources simultaneously. Triton's dynamic batching groups those requests and runs them as a single batch — dramatically improving GPU utilization without adding latency from an orchestration perspective.</p>
+
+<p>The key config parameters are <code>max_queue_delay_microseconds</code> and <code>preferred_batch_size</code>. Tune these based on your latency SLO, not blindly.</p>
+
+<h2>When Things Go Wrong</h2>
+
+<p>The hardest part of Triton in production is debugging failures. Models can fail at load time, at warmup, or under specific input shapes. My debugging checklist: check the server logs (not just client errors), verify input/output tensor names match exactly, and test with the perf_analyzer tool before going live.</p>
+
+<p>One specific gotcha: ONNX models exported from PyTorch often have dynamic axes that Triton handles differently than you'd expect. Always set explicit shapes in config.pbtxt rather than relying on dynamic shape inference.</p>

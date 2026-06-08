@@ -1,0 +1,36 @@
+<p>When I started building the Minecraft voice agent, I had one hard constraint: it needed to work entirely offline. No OpenAI API calls, no cloud inference, no internet required at runtime. Just a local machine, a microphone, and a game running on the same box.</p>
+
+<p>That constraint forced me to deeply understand what's actually possible with local LLMs in 2024 — and the answer is: <strong>a lot more than most people think.</strong></p>
+
+<h2>The Stack I Ended Up With</h2>
+
+<p>The final architecture looks like this: speech-to-text via a local Whisper model, speaker diarization to identify who's speaking, Qdrant for fast vector lookup of known speakers, and Ollama to run the command-to-action LLM pipeline. All on consumer hardware.</p>
+
+<pre><code># Rough pipeline sketch
+audio_input → whisper_stt → speaker_diarization
+              ↓
+         qdrant_lookup (who is this speaker?)
+              ↓
+         ollama_llm (what action does this map to?)
+              ↓
+         mineflayer_api (execute in-game)</code></pre>
+
+<h2>Choosing the Right Model for Constrained Hardware</h2>
+
+<p>The biggest lesson: <strong>don't start with the biggest model that fits in VRAM.</strong> Start with the smallest model that can reliably do the task, then scale up only if needed. For command-to-API mapping, a 7B parameter model with a well-designed prompt beats a 70B model with a lazy one every time.</p>
+
+<p>Ollama makes model swapping trivial — you swap a single string and get a completely different model. I went through about eight models before landing on the right size/accuracy tradeoff for this specific task.</p>
+
+<blockquote>"The offline constraint wasn't a limitation. It was a design principle that forced better engineering decisions."</blockquote>
+
+<h2>The Qdrant Trick for Speaker Identity</h2>
+
+<p>Speaker diarization tells you <em>that</em> there are different speakers — it doesn't tell you <em>who</em> they are. To make the agent speaker-aware (so it responds differently to different people), I stored speaker embeddings in Qdrant and did fast cosine similarity lookup at runtime. The whole lookup takes under 5ms.</p>
+
+<p>This same pattern is applicable to tons of edge AI scenarios: fast, local semantic search as a memory system, without needing any cloud infrastructure.</p>
+
+<h2>What I'd Do Differently</h2>
+
+<p>The main thing I underestimated was latency perception. A 1.5 second end-to-end response time feels fine on a benchmark, but feels sluggish in a game where you're expecting instant feedback. I'd invest more time in reducing perceived latency — streaming responses, partial execution of actions while the LLM is still generating, etc.</p>
+
+<p>Overall though, building fully offline AI systems is more accessible than ever. If you're still routing everything through cloud APIs, it's worth asking whether you actually need to.</p>

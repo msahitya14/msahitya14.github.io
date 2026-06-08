@@ -1,0 +1,50 @@
+[
+  {
+    "type": "native",
+    "date": "Feb 2026",
+    "fullDate": "February 10, 2025",
+    "slug": "running-llms-on-edge",
+    "title": "Running LLMs at the Edge: Lessons from Building an Offline Voice Agent",
+    "excerpt": "What I learned from building the Minecraft voice agent — picking models for constrained hardware, the Ollama ecosystem, and why offline-first AI is the future.",
+    "tags": ["LLM", "Edge AI", "Ollama"],
+    "readTime": "7 min"
+  },
+  {
+    "type": "native",
+    "date": "Jan 2026",
+    "fullDate": "January 22, 2025",
+    "slug": "triton-inference-server-guide",
+    "title": "Triton Inference Server: A Practical Production Guide",
+    "excerpt": "Skip the tutorials that stop at Hello World. Here's what actually matters when deploying Triton in a real multi-model surveillance pipeline at scale.",
+    "tags": ["MLOps", "Triton", "Production"],
+    "readTime": "10 min"
+  },
+  {
+    "type": "medium",
+    "date": "Jun 2024",
+    "url": "https://medium.com/@msahitya10/a-guide-to-configure-your-label-studio-project-probably-the-easier-way-ba7484736fad",
+    "title": "A Guide to Configure Your Label Studio Project — Probably the Easier Way",
+    "excerpt": "A practical guide to setting up and configuring Label Studio projects, with tips for avoiding common pitfalls.",
+    "tags": ["Label Studio", "Configuration", "Tips"],
+    "readTime": "8 min"
+  },
+  {
+    "type": "native",
+    "date": "Nov 2024",
+    "fullDate": "November 14, 2024",
+    "slug": "openvino-vs-tensorrt",
+    "title": "OpenVINO vs TensorRT: A Real-World Comparison",
+    "excerpt": "Not a benchmark post. A story about deploying the same model stack on Intel and NVIDIA hardware simultaneously, and what broke along the way.",
+    "tags": ["Inference", "OpenVINO", "TensorRT"],
+    "readTime": "9 min"
+  },
+  {
+    "type": "medium",
+    "date": "Jul 2020",
+    "url": "https://medium.com/adg-vit/typography-and-ui-fa62d4de7c15",
+    "title": "Typography and UI Design: A Practical Guide",
+    "excerpt": "A deep dive into the principles of typography and UI design, with real-world examples from my work at ADG VIT.",
+    "tags": ["UI", "UX", "Design"],
+    "readTime": "6 min"
+  }
+]

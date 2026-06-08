@@ -1,0 +1,23 @@
+<p>The smartphone testing robot I built at Griffyn Robotech had an unusual constraint: it needed to run the same model stack on both Intel CPU/iGPU-based edge devices AND NVIDIA GPU servers, depending on where it was deployed. That meant I had to get serious about both OpenVINO and TensorRT at the same time.</p>
+
+<p>Here's what I found.</p>
+
+<h2>The Short Version</h2>
+
+<p>TensorRT wins on raw throughput if you have NVIDIA hardware. OpenVINO wins on versatility and ease of use, especially for edge deployment on Intel silicon. Neither is universally better.</p>
+
+<h2>The Conversion Pipeline Differences</h2>
+
+<p>Both tools require converting your original PyTorch/TensorFlow model. TensorRT goes through ONNX first, then compiles to a platform-specific .plan file. OpenVINO uses its Model Optimizer (now part of OpenVINO Runtime) to create an IR (Intermediate Representation) format.</p>
+
+<p>The crucial difference: TensorRT engine files are tied to a specific GPU and CUDA version. You can't build on your dev machine and deploy to production without rebuilding. OpenVINO IR files are more portable within the Intel ecosystem.</p>
+
+<h2>Precision and Accuracy</h2>
+
+<p>Both support INT8 quantization. TensorRT's calibration is more involved but gives better results in my experience. OpenVINO's Post-Training Optimization Toolkit is easier to use but occasionally produces models with noticeable accuracy drops on complex tasks like fine-grained segmentation.</p>
+
+<p>For our defect segmentation model, we saw a 2% accuracy drop with OpenVINO INT8 that wasn't acceptable. We ended up running FP16 on Intel hardware instead, which was a reasonable tradeoff.</p>
+
+<h2>My Recommendation</h2>
+
+<p>If you're deploying only on NVIDIA hardware and throughput is critical: TensorRT. If you're deploying to Intel edge devices or need hardware flexibility: OpenVINO. If you need both like I did: build abstraction layers and support both backends.</p>
